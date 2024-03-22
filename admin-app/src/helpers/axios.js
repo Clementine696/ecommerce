@@ -14,7 +14,11 @@ const axiosIntance = axios.create({
 
 // Add a request interceptor
 axiosIntance.interceptors.request.use((request) => {
-  return request;
+    const { auth } = store.getState();
+    if(auth.token){
+      request.headers.Authorization = `Bearer ${auth.token}`;
+    }
+    return request;
 
   });
 
@@ -22,10 +26,6 @@ axiosIntance.interceptors.request.use((request) => {
 axiosIntance.interceptors.response.use((response) => {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    // const { auth } = store.getState();
-    // if(auth.token){
-    //   req.headers.Authorization = `Bearer ${auth.token}`;
-    // }
 
     return response;
   }, (error) => {
