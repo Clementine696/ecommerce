@@ -18,11 +18,11 @@ const NewModal = (props) => {
                         </Button>
                         )
                 }
-                <Button variant="secondary" onClick={props.handleCancel}>
+                <Button variant="secondary" style={{backgroundColor: '#333'}} {...props} className="btn-sm"onClick={props.handleCancel}>
                     Cancel
                 </Button>
-                <Button variant="primary" onClick={props.handleClose}>
-                    Add
+                <Button variant="primary" style={{backgroundColor: '#333'}} {...props} className="btn-sm" onClick={props.handleClose}>
+                    Save
                 </Button>
             </Modal.Footer>
         </Modal>
